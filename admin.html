@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lite CMS – Admin</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: #f6f7f9;
+    color: #111;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .nav {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .nav-item {
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .nav-item:hover {
+    background: #f1f5f9;
+  }
+
+  .nav-item.active {
+    background: #111;
+    color: white;
+  }
+
+  .sidebar-actions {
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+  }
+
+  .sidebar button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* MAIN */
+  .main {
+    margin-left: 260px;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 60px 1fr;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  .topbar h1 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* EDITOR */
+  .editor {
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .card-header {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  /* INPUTS */
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  /* BUTTONS */
+  button {
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  button:hover {
+    background: #f3f4f6;
+  }
+
+  .primary {
+    background: #111;
+    color: white;
+    border: none;
+  }
+
+  .danger {
+    background: #ef4444;
+    color: white;
+    border: none;
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">Lite CMS</div>
+
+  <div class="nav" id="nav"></div>
+
+  <div class="sidebar-actions">
+    <button onclick="addSection()">+ New Section</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <h1 id="sectionTitle">Editor</h1>
+
+    <div class="actions">
+      <button onclick="addField()">+ Field</button>
+      <button onclick="addProject()">+ Project</button>
+      <button class="primary" onclick="downloadJSON()">Download</button>
+    </div>
+  </div>
+
+  <!-- EDITOR -->
+  <div class="editor" id="editor"></div>
+
+</div>
+
+<script src="admin.js"></script>
+
+<script>
+  // small enhancement: update top title when switching section
+  const originalRender = renderEditor;
+
+  renderEditor = function () {
+    document.getElementById("sectionTitle").innerText = currentSection || "Editor";
+    originalRender();
+  };
+</script>
+
+</body>
+</html>

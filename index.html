@@ -7,6 +7,8 @@
 </head>
 <body>
 
+    <button id="editButton">Edit</button>
+
     <button id="fetchDataButton">Fetch Data</button>
 
     <h1 id="mainTitle">Try hitting the Fetch Data button</h1>
@@ -16,5 +18,10 @@
     <div id="listContainer">Heres a list of projects. It should appear after hitting the fetch data button</div>
     
     <script src="main.js"></script>
+    <script>
+        document.getElementById("editButton").addEventListener("click", () => {
+          window.location.href = "admin.html";
+        });
+    </script>
 </body>
 </html>
