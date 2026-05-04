@@ -1,0 +1,27 @@
+{
+    "main": {
+        "title": "This is working!",
+        "paragraph": "If you can read this, it means it worked"
+    },
+
+    "list": {
+        "project1": {
+            "id": "0001",
+            "title": "Project One",
+            "description": "Project one is the first project",
+            "image": "-- path to image --"
+        },
+        "project2": {
+            "id": "0002",
+            "title": "Project Two",
+            "description": "Project one is the second project",
+            "image": "-- path to image --"
+        },
+        "project3": {
+            "id": "0003",
+            "title": "Project Three",
+            "description": "Project one is the third project",
+            "image": "-- path to image --"
+        }
+    }
+}
